@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up as User</title>
+
+    <script>
+        function validate() {
+            var name = document.forms["signUpForm"]["name"].value;
+            var email = document.forms["signUpForm"]["email"].value;
+            var password = document.forms["signUpForm"]["password"].value;
+            var second_password = document.forms["signUpForm"]["confirm_password"].value;
+
+            //validation of name
+            if(name == null || name === ""){
+                alert("Please Input Your Name");
+                return false;
+            }
+
+            //validation of email address
+            if(email == null || email === ""){
+                alert("Please Input Email");
+                return false;
+            }
+            var atpos=email.indexOf("@");
+            var dotpos=email.lastIndexOf(".");
+            if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length){
+                alert("Invalid Email Address");
+                return false;
+            }
+
+            //validation of password
+            if(password == null || password === "") {
+                alert("Please Input Password");
+                return false;
+            }
+            if(second_password == null || second_password === ""){
+                alert("Password not confirmed");
+                return false;
+            }
+
+            if(password != second_password){
+                alert("Passwords are not the same");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1 align="center" style="font-family: Helvetica;">Sign Up as User</h1>
+
+    <br><br>
+
+    <form name="signUpForm" method="post" action="SignUp.do" onsubmit="return validate()">
+        <div align="center">
+            <label for="name">Name:</label>
+            <input name="name" type="text" id="name">
+        </div>
+
+        <div align="center">
+            <label for="email">Email:</label>
+            <input name="email" type="text" id="email">
+        </div>
+
+        <div align="center">
+            <label for="password">Password:</label>
+            <input name="password" type="password" id="password">
+        </div>
+
+        <div align="center">
+            <label for="confirm_password">Confirm Password:</label>
+            <input name="confirm_password" type="password" id="confirm_password">
+        </div>
+
+        <br><br>
+
+        <div align="center">
+            <button type="submit">Sign Up</button>
+        </div>
+    </form>
+</body>
+</html>
