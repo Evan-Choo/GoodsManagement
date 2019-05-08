@@ -18,7 +18,7 @@ public class Login extends HttpServlet {
             HttpSession session =  request.getSession();
             session.setAttribute("email", request.getParameter("email"));
             session.setAttribute("password", request.getParameter("password"));
-            response.sendRedirect("admin.jsp");
+            response.sendRedirect("admin_validation.jsp");
         }
     }
 

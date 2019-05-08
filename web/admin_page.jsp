@@ -1,18 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: evanchoo
-  Date: 5/7/19
-  Time: 3:44 PM
+  Date: 5/8/19
+  Time: 11:40 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page errorPage="error.jsp" %>
-
-<%@ page import="javax.servlet.*, javax.servlet.http.*" %>
-<%@ page import="java.util.*, java.io.*, java.sql.*" %>
 
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page errorPage="error.jsp" %>
 
 <html>
 <head>
@@ -21,41 +19,40 @@
 <body>
     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/GoodsManage" user="root" password=""/>
 
-    <sql:query var="validation" dataSource="${snapshot}">
-        SELECT * FROM Admins WHERE email = "<%=session.getAttribute("email")%>";
-    </sql:query>
-
-    <%session.removeAttribute("email");%>
-
-    <c:set var="count" scope="request" value="${validation.rowCount}"/>
-
-    <c:forEach var="row" items="${validation.rows}" end="0">
-        <c:set var="correct_password" value="${row.password}" scope="request"/>
-    </c:forEach>
-
+    <%--Get the email of the Admin from cookies for further use--%>
     <%
-        String password = (String)session.getAttribute("password");
-        session.removeAttribute("password");
-        String correct_password = (String)request.getAttribute("correct_password");
-
-        if((int)request.getAttribute("count") == 0)
-            throw new Exception("Admin Does Not Exist!");
-        if(!password.equals(correct_password))
-            throw new Exception("Incorrect Password");
+//        Cookie[] cookies = request.getCookies();
+//        String admin_email = "";
+//        if(cookies != null) {
+//            for(int i = 0; i < cookies.length; i++) {
+//                Cookie cookie = cookies[i];
+//                if(cookie.getName().equals("email")){
+//                    admin_email = cookie.getValue();
+//                    break;
+//                }
+//            }
+//        }
+        if(session.getAttribute("email") == null)
+            throw new Exception("Session Timeout");
+        String email = (String)session.getAttribute("email");
     %>
 
-    <sql:query var="all_goods" dataSource="${snapshot}">
-        SELECT * FROM Goods;
-    </sql:query>
+    <div>
+        <h1 align="left" style="font-family: Helvetica; color: grey;">Hello, Admin(<%=email%>)</h1>
+    </div>
 
     <div>
-        <h1 align="left" style="font-family: Helvetica; color: grey;">Hello, Admin</h1>
+        <a href="log_out.jsp">Log Out</a>
     </div>
 
     <div>
         <button name="addCatagory">Add Catagory</button>
         <button name="addGood">Add Goods</button>
     </div>
+
+    <sql:query var="all_goods" dataSource="${snapshot}">
+        SELECT * FROM Goods;
+    </sql:query>
 
     <table width="100%" border="1">
         <tr>

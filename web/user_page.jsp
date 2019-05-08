@@ -18,19 +18,22 @@
 </head>
 <body>
     <%
-        Cookie[] cookies = request.getCookies();
-        String email = "";
-        if(cookies != null) {
-            for(int i = 0; i < cookies.length; i++) {
-                Cookie cookie = cookies[i];
-                if(cookie.getName().equals("email")) {
-                    email = cookie.getValue();
-                    break;
-                }
-            }
-        }
-        if(email.equals(""))
-            throw new Exception("Session Timeout!");
+//        Cookie[] cookies = request.getCookies();
+//        String email = "";
+//        if(cookies != null) {
+//            for(int i = 0; i < cookies.length; i++) {
+//                Cookie cookie = cookies[i];
+//                if(cookie.getName().equals("email")) {
+//                    email = cookie.getValue();
+//                    break;
+//                }
+//            }
+//        }
+//        if(email.equals(""))
+//            throw new Exception("Session Timeout!");
+        if(session.getAttribute("email") == null)
+            throw new Exception("Session Timeout");
+        String email = (String)session.getAttribute("email");
     %>
 
     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/GoodsManage" user="root" password=""/>
@@ -48,8 +51,11 @@
     </div>
 
     <div>
-        <button name="logOut">Log Out</button>
-        <button name="showCart">My Shopping Cart</button>
+        <a href="log_out.jsp">Log Out</a>
+    </div>
+
+    <div>
+        <a href="shopping_cart.jsp">My Shopping Cart</a>
     </div>
 
     <sql:query var="show_goods" dataSource="${snapshot}">
@@ -67,8 +73,8 @@
             <tr>
                 <td>${row.name}</td>
                 <td>${row.price}</td>
-                <td>Add to Cart</td>
-                <td>View Detail</td>
+                <td><button name="addToCart" >Add to Cart</button></td>
+                <td><button name="viewDetail">View Detail</button></td>
             </tr>
         </c:forEach>
     </table>

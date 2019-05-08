@@ -40,7 +40,16 @@
 
     <%
         session.removeAttribute("name");
-        response.sendRedirect("user_validation.jsp");
+        session.removeAttribute("password");
+    %>
+
+    <%
+        Cookie cookie = new Cookie("email", (String)session.getAttribute("email"));
+        session.removeAttribute("email");
+        cookie.setMaxAge(5*60);
+        response.addCookie(cookie);
+
+        response.sendRedirect("user_page.jsp");
     %>
 </body>
 </html>

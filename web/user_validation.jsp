@@ -47,10 +47,10 @@
     %>
 
     <%
-        Cookie cookie = new Cookie("email", (String)session.getAttribute("email"));
-        cookie.setMaxAge(20);
-        response.addCookie(cookie);
-
+//        Cookie cookie = new Cookie("email", (String)session.getAttribute("email"));
+//        session.removeAttribute("email");
+//        cookie.setMaxAge(5*60);
+//        response.addCookie(cookie);
         response.sendRedirect("user_page.jsp");
     %>
 
