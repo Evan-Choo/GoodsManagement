@@ -21,12 +21,12 @@
 <body>
     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/GoodsManage" user="root" password=""/>
 
-    <sql:query var="validation" dataSource="${snapshot}">
+    <sql:query var="get_name" dataSource="${snapshot}">
         SELECT * FROM Users WHERE Email = "<%=session.getAttribute("email")%>";
     </sql:query>
 
 
-    <c:set var="res_count" value="${validation.rowCount}" scope="request"/>
+    <c:set var="res_count" value="${get_name.rowCount}" scope="request"/>
 
     <%
         int rowCount = (int)request.getAttribute("res_count");
@@ -40,7 +40,7 @@
 
     <%
         session.removeAttribute("name");
-        response.sendRedirect("user.jsp");
+        response.sendRedirect("user_validation.jsp");
     %>
 </body>
 </html>

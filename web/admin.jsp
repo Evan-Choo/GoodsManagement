@@ -21,15 +21,15 @@
 <body>
     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/GoodsManage" user="root" password=""/>
 
-    <sql:query var="validation" dataSource="${snapshot}">
+    <sql:query var="get_name" dataSource="${snapshot}">
         SELECT * FROM Admins WHERE email = "<%=session.getAttribute("email")%>";
     </sql:query>
 
     <%session.removeAttribute("email");%>
 
-    <c:set var="count" scope="request" value="${validation.rowCount}"/>
+    <c:set var="count" scope="request" value="${get_name.rowCount}"/>
 
-    <c:forEach var="row" items="${validation.rows}" end="0">
+    <c:forEach var="row" items="${get_name.rows}" end="0">
         <c:set var="correct_password" value="${row.password}" scope="request"/>
     </c:forEach>
 

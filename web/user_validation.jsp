@@ -20,15 +20,13 @@
 <body>
     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/GoodsManage" user="root" password=""/>
 
-    <sql:query var="validation" dataSource="${snapshot}">
+    <sql:query var="get_name" dataSource="${snapshot}">
         SELECT * FROM Users WHERE Email = "<%=(String)session.getAttribute("email")%>";
     </sql:query>
 
-    <%session.removeAttribute("email");%>
+    <c:set var="rowNumber" value="${get_name.rowCount}" scope="request"/>
 
-    <c:set var="rowNumber" value="${validation.rowCount}" scope="request"/>
-
-    <c:forEach var="row" items="${validation.rows}" end="0">
+    <c:forEach var="row" items="${get_name.rows}" end="0">
         <c:set var="correct_password" value="${row.password}" scope="request"/>
         <c:set var="user_name" value="${row.name}" scope="request"/>
     </c:forEach>
@@ -48,36 +46,13 @@
             throw new Exception("Incorrect Password!");
     %>
 
-    <div>
-        <h1 align="left" style="font-family: Helvetica; color: grey">Hello, ${user_name}</h1>
-    </div>
+    <%
+        Cookie cookie = new Cookie("email", (String)session.getAttribute("email"));
+        cookie.setMaxAge(20);
+        response.addCookie(cookie);
 
-    <div>
-        <button name="logOut">Log Out</button>
-        <button name="showCart">My Shopping Cart</button>
-    </div>
-
-    <sql:query var="showGoods" dataSource="${snapshot}">
-        SELECT * FROM Goods;
-    </sql:query>
-
-    <table width="100%" border="1">
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th> </th>
-            <th> </th>
-        </tr>
-        <c:forEach var="row" items="${showGoods.rows}">
-            <tr>
-                <td>${row.name}</td>
-                <td>${row.price}</td>
-                <td>Add to Cart</td>
-                <td>View Detail</td>
-            </tr>
-        </c:forEach>
-    </table>
-
+        response.sendRedirect("user_page.jsp");
+    %>
 
 </body>
 </html>

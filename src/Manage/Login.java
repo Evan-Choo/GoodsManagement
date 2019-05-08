@@ -13,7 +13,7 @@ public class Login extends HttpServlet {
             HttpSession session =  request.getSession();
             session.setAttribute("email", request.getParameter("email"));
             session.setAttribute("password", request.getParameter("password"));
-            response.sendRedirect("user.jsp");
+            response.sendRedirect("user_validation.jsp");
         } else if (value.equals("admin")) {
             HttpSession session =  request.getSession();
             session.setAttribute("email", request.getParameter("email"));

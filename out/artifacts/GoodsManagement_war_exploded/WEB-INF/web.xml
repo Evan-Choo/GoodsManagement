@@ -5,41 +5,16 @@
          version="4.0">
     <!--servlets-->
     <servlet>
-        <servlet-name>CH3 Beer</servlet-name>
-        <servlet-class>Beer.BeerSelect</servlet-class>
-    </servlet>
-
-    <servlet>
-        <servlet-name>Param tester</servlet-name>
-        <servlet-class>Beer.Tester</servlet-class>
-
-        <init-param>
-            <param-name>adminEmail</param-name>
-            <param-value>likewecare@nbcs.com</param-value>
-        </init-param>
-    </servlet>
-
-    <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>Beer.Tester</servlet-class>
+        <servlet-class>Manage.Login</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>SignUp</servlet-name>
-        <servlet-class>Beer.SignUp</servlet-class>
+        <servlet-class>Manage.SignUp</servlet-class>
     </servlet>
 
     <!--servlet mapping-->
-    <servlet-mapping>
-        <servlet-name>Param tester</servlet-name>
-        <url-pattern>/Tester.do</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>CH3 Beer</servlet-name>
-        <url-pattern>/SelectBeer.do</url-pattern>
-    </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login.do</url-pattern>
@@ -51,19 +26,12 @@
     </servlet-mapping>
 
     <!--context parameters-->
-    <context-param>
-        <param-name>breed</param-name>
-        <param-value>Great Dane</param-value>
-    </context-param>
 
     <!--listeners-->
-    <listener>
-        <listener-class>Beer.BreedServletContextListner</listener-class>
-    </listener>
 
     <!--sesstion configuration-->
     <session-config>
-        <session-timeout>15</session-timeout>
+        <session-timeout>5</session-timeout>
     </session-config>
 
     <!--jsp configurations-->
