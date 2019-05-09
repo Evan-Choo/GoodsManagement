@@ -64,17 +64,29 @@
 
     <table width="100%" border="1">
         <tr>
+            <td>ID</td>
             <th>Name</th>
             <th>Price</th>
+            <th>Stock</th>
             <th> </th>
             <th> </th>
         </tr>
         <c:forEach var="row" items="${show_goods.rows}">
             <tr>
+                <td>${row.id}</td>
                 <td>${row.name}</td>
                 <td>${row.price}</td>
-                <td><button name="addToCart" >Add to Cart</button></td>
-                <td><button name="viewDetail">View Detail</button></td>
+                <td>${row.stock}</td>
+                <td>
+                    <form method="post" name="add_good" action="add_good.do">
+                        <button type="submit" name="id" value="${row.id}">Add to Cart</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" name="view_detail" action="view_detail.do">
+                        <button type="submit" name="id" value="${row.id}">View Detail</button>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
     </table>

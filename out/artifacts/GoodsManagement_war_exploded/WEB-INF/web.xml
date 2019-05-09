@@ -14,6 +14,21 @@
         <servlet-class>Manage.SignUp</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>Checkout</servlet-name>
+        <jsp-file>/checkout.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddToCart</servlet-name>
+        <servlet-class>Manage.AddToCart</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ViewDetail</servlet-name>
+        <jsp-file>/view_detail.jsp</jsp-file>
+    </servlet>
+
     <!--servlet mapping-->
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -25,7 +40,61 @@
         <url-pattern>/SignUp.do</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>Checkout</servlet-name>
+        <url-pattern>/checkout.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AddToCart</servlet-name>
+        <url-pattern>/add_good.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ViewDetail</servlet-name>
+        <url-pattern>/view_detail.do</url-pattern>
+    </servlet-mapping>
+
     <!--context parameters-->
+    <context-param>
+        <param-name>dbname0</param-name>
+        <param-value>electro_year</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>idname0</param-name>
+        <param-value>electro_id</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>title0</param-name>
+        <param-value>Year of Debut: </param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>dbname1</param-name>
+        <param-value>book_isbn</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>idname1</param-name>
+        <param-value>book_id</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>title1</param-name>
+        <param-value>ISBN Number: </param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>colname0</param-name>
+        <param-value>year</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>colname1</param-name>
+        <param-value>isbn</param-value>
+    </context-param>
 
     <!--listeners-->
 
