@@ -61,12 +61,6 @@
         WHERE good_id = ${sessionScope['good_id']};
     </sql:update>
 
-    <%--delete from catagory--%>
-    <sql:update dataSource="${snapshot}">
-        DELETE FROM Catagories
-        WHERE id = ${sessionScope['good_id']};
-    </sql:update>
-
     <%--finally, delete from goods itself--%>
     <sql:update dataSource="${snapshot}">
         DELETE FROM Goods

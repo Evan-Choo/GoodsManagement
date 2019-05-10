@@ -18,19 +18,6 @@
 </head>
 <body>
     <%
-//        Cookie[] cookies = request.getCookies();
-//        String email = "";
-//        if(cookies != null) {
-//            for(int i = 0; i < cookies.length; i++) {
-//                Cookie cookie = cookies[i];
-//                if(cookie.getName().equals("email")) {
-//                    email = cookie.getValue();
-//                    break;
-//                }
-//            }
-//        }
-//        if(email.equals(""))
-//            throw new Exception("Session Timeout!");
         if(session.getAttribute("email") == null)
             throw new Exception("Session Timeout");
         String email = (String)session.getAttribute("email");
@@ -58,9 +45,41 @@
         <a href="shopping_cart.jsp">My Shopping Cart</a>
     </div>
 
-    <sql:query var="show_goods" dataSource="${snapshot}">
-        SELECT * FROM Goods;
+    <c:choose>
+        <c:when test="${sessionScope['cur_cata'] == -1}">
+            <sql:query var="show_goods" dataSource="${snapshot}">
+                SELECT * FROM Goods;
+            </sql:query>
+        </c:when>
+        <c:otherwise>
+            <sql:query var="show_goods" dataSource="${snapshot}">
+                SELECT * FROM Goods WHERE catagory = ${sessionScope['cur_cata']};
+            </sql:query>
+        </c:otherwise>
+    </c:choose>
+
+    <sql:query var="all_cata" dataSource="${snapshot}">
+        SELECT * FROM Catagories;
     </sql:query>
+
+    <div>
+        <form method="post" action="select_cata.do">
+            <select name="cur_cata" id="cur_cata">
+                <option value="-1" selected>ALL</option>
+                <c:forEach var="row" items="${all_cata.rows}">
+                    <c:choose>
+                        <c:when test="${row.id == sessionScope['cur_cata']}">
+                            <option value="${row.id}" selected>${row.id}.${row.name}</option>
+                        </c:when>
+                        <c:otherwise>
+                            <option value="${row.id}">${row.id}.${row.name}</option>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </select>
+            <button type="submit">OK</button>
+        </form>
+    </div>
 
     <table width="100%" border="1">
         <tr>

@@ -44,11 +44,7 @@
     %>
 
     <%
-        Cookie cookie = new Cookie("email", (String)session.getAttribute("email"));
-        session.removeAttribute("email");
-        cookie.setMaxAge(5*60);
-        response.addCookie(cookie);
-
+        session.setAttribute("cur_cata", -1);
         response.sendRedirect("user_page.jsp");
     %>
 </body>

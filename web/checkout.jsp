@@ -19,7 +19,7 @@
     <%--back home func--%>
     <script>
         function home() {
-            window.location.replace("user_page.jsp");
+            window.location.replace("shopping_cart.jsp");
         }
     </script>
 </head>
@@ -47,7 +47,7 @@
 
     <h1 style="font-family: Helvetica; color: darkslategrey;" align="center">Succeed, ${user_name}! Thank you!</h1>
     <div>
-        <button name="back_home">Back</button>
+        <button name="back_home" onclick="home()">Back</button>
     </div>
 </body>
 </html>

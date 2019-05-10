@@ -58,6 +58,11 @@
         <servlet-name>AfterNewGood</servlet-name>
         <jsp-file>/after_add_new_good.jsp</jsp-file>
     </servlet>
+    
+    <servlet>
+        <servlet-name>SelectCata</servlet-name>
+        <jsp-file>/select_cata.jsp</jsp-file>
+    </servlet>
 
     <!--servlet mapping-->
     <servlet-mapping>
@@ -113,6 +118,11 @@
     <servlet-mapping>
         <servlet-name>AfterNewGood</servlet-name>
         <url-pattern>/after_add_good.do</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>SelectCata</servlet-name>
+        <url-pattern>/select_cata.do</url-pattern>
     </servlet-mapping>
 
     <!--context parameters-->
