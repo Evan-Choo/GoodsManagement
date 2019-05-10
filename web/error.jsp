@@ -11,9 +11,16 @@
 <html>
 <head>
     <title>Error!</title>
+    <script>
+        function home() {
+            window.location.replace("index.jsp");
+        }
+    </script>
 </head>
 <body>
     <br><br>
-    <h1 align="center" style="font-family: Helvetica; color: red"><%=exception.getMessage()%></h1>
+    <h1 align="center" style="font-family: Helvetica; color: red" id="message"><%=exception.getMessage()%></h1>
+
+    <button name="back_home" onclick="home()">Back</button>
 </body>
 </html>

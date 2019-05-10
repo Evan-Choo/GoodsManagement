@@ -46,8 +46,11 @@
     </div>
 
     <div>
-        <button name="addCatagory">Add Catagory</button>
-        <button name="addGood">Add Goods</button>
+        <a href="add_catagory.jsp">Add Catagory</a>
+    </div>
+
+    <div>
+        <a href="add_new_good.jsp">Add New Good</a>
     </div>
 
     <sql:query var="all_goods" dataSource="${snapshot}">
@@ -72,8 +75,16 @@
                 <td><c:out value="${row.stock}"/></td>
                 <td><c:out value="${row.catagory}"/></td>
                 <td><c:out value="${row.price}"/></td>
-                <td><a href="sign_up.html">Edit</a></td>
-                <td><a href="delete">DELETE</a> </td>
+                <td>
+                    <form name="edit_good" method="post" action="edit_good.do">
+                        <button type="submit" name="edit" value="${row.id}">Edit Info</button>
+                    </form>
+                </td>
+                <td>
+                    <form name="delete_good" method="post" action="delete_good.do">
+                        <button type="submit" name="delete" value="${row.id}">DELETE</button>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
     </table>

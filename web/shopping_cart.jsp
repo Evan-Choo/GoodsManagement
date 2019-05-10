@@ -82,7 +82,7 @@
                 </td>
                 <td>
                     <form method="post" name="delete_cart_item" action="delete_cart_item.do">
-                        <button type="submit" name="id" value="${row.id}">Add to Cart</button>
+                        <button type="submit" name="id" value="${row.good_id}">DELETE</button>
                     </form>
                 </td>
 

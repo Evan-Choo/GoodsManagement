@@ -917,153 +917,201 @@
     <table id="231" parent="2" name="Goods"/>
     <table id="232" parent="2" name="ShoppingCarts"/>
     <table id="233" parent="2" name="Users"/>
-    <column id="234" parent="229" name="email">
+    <table id="234" parent="2" name="book_isbn"/>
+    <table id="235" parent="2" name="electro_year"/>
+    <column id="236" parent="229" name="email">
       <Position>1</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="229" name="password">
+    <column id="237" parent="229" name="password">
       <Position>2</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="236" parent="229" name="PRIMARY">
+    <key id="238" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="237" parent="230" name="id">
+    <column id="239" parent="230" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="238" parent="230" name="name">
+    <column id="240" parent="230" name="name">
       <Position>2</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="239" parent="230" name="PRIMARY">
+    <key id="241" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="240" parent="231" name="id">
+    <column id="242" parent="231" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="231" name="name">
+    <column id="243" parent="231" name="name">
       <Position>2</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="231" name="stock">
+    <column id="244" parent="231" name="stock">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="231" name="catagory">
+    <column id="245" parent="231" name="catagory">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="231" name="price">
+    <column id="246" parent="231" name="price">
       <Position>5</Position>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="245" parent="231" name="fk_catagory_idx">
+    <index id="247" parent="231" name="fk_catagory_idx">
       <ColNames>catagory</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="246" parent="231" name="PRIMARY">
+    <key id="248" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="247" parent="231" name="fk_catagory">
+    <foreign-key id="249" parent="231" name="fk_catagory">
       <ColNames>catagory</ColNames>
       <RefSchemaName>GoodsManage</RefSchemaName>
       <RefTableName>Catagories</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="248" parent="232" name="user_id">
+    <column id="250" parent="232" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="232" name="good_id">
+    <column id="251" parent="232" name="good_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="232" name="quantity">
+    <column id="252" parent="232" name="quantity">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="251" parent="232" name="good_id_fk_idx">
+    <index id="253" parent="232" name="good_id_fk_idx">
       <ColNames>good_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="252" parent="232" name="PRIMARY">
+    <key id="254" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id
 good_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="253" parent="232" name="user_id_fk">
+    <foreign-key id="255" parent="232" name="user_id_fk">
       <ColNames>user_id</ColNames>
       <RefSchemaName>GoodsManage</RefSchemaName>
       <RefTableName>Users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="254" parent="232" name="good_id_fk">
+    <foreign-key id="256" parent="232" name="good_id_fk">
       <ColNames>good_id</ColNames>
       <RefSchemaName>GoodsManage</RefSchemaName>
       <RefTableName>Goods</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="255" parent="233" name="id">
+    <column id="257" parent="233" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="256" parent="233" name="name">
+    <column id="258" parent="233" name="name">
       <Position>2</Position>
       <DataType>varchar(64)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="257" parent="233" name="email">
+    <column id="259" parent="233" name="email">
       <Position>3</Position>
       <DataType>varchar(128)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="233" name="password">
+    <column id="260" parent="233" name="password">
       <Position>4</Position>
       <DataType>varchar(64)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="259" parent="233" name="PRIMARY">
+    <key id="261" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
+    <column id="262" parent="234" name="book_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="263" parent="234" name="isbn">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="264" parent="234" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>book_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="265" parent="234" name="fk_id">
+      <ColNames>book_id</ColNames>
+      <RefSchemaName>GoodsManage</RefSchemaName>
+      <RefTableName>Goods</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="266" parent="235" name="electro_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="267" parent="235" name="year">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="268" parent="235" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>electro_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="269" parent="235" name="fk_eletroid">
+      <ColNames>electro_id</ColNames>
+      <RefSchemaName>GoodsManage</RefSchemaName>
+      <RefTableName>Goods</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

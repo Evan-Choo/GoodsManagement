@@ -34,6 +34,21 @@
         <jsp-file>/delete_cart_item.jsp</jsp-file>
     </servlet>
 
+    <servlet>
+        <servlet-name>EditGood</servlet-name>
+        <jsp-file>/edit_good.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DeleteGood</servlet-name>
+        <jsp-file>/delete_good.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AfterEdit</servlet-name>
+        <jsp-file>/after_edit.jsp</jsp-file>
+    </servlet>
+
     <!--servlet mapping-->
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -63,6 +78,21 @@
     <servlet-mapping>
         <servlet-name>DeleteCartItem</servlet-name>
         <url-pattern>/delete_cart_item.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EditGood</servlet-name>
+        <url-pattern>/edit_good.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DeleteGood</servlet-name>
+        <url-pattern>/delete_good.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AfterEdit</servlet-name>
+        <url-pattern>/after_edit.do</url-pattern>
     </servlet-mapping>
 
     <!--context parameters-->
@@ -110,7 +140,7 @@
 
     <!--sesstion configuration-->
     <session-config>
-        <session-timeout>1</session-timeout>
+        <session-timeout>15</session-timeout>
     </session-config>
 
     <!--jsp configurations-->
