@@ -50,8 +50,6 @@
         if(session.getAttribute("email") == null)
             throw new Exception("Session Timeout");
         String email = (String)session.getAttribute("email");
-        session.removeAttribute("year");
-        session.removeAttribute("isbn");
     %>
 
     <%--get the id of the good to be edited--%>

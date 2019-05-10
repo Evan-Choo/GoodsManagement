@@ -49,6 +49,16 @@
         <jsp-file>/after_edit.jsp</jsp-file>
     </servlet>
 
+    <servlet>
+        <servlet-name>AfterNewCata</servlet-name>
+        <jsp-file>/after_new_cata.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AfterNewGood</servlet-name>
+        <jsp-file>/after_add_new_good.jsp</jsp-file>
+    </servlet>
+
     <!--servlet mapping-->
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -93,6 +103,16 @@
     <servlet-mapping>
         <servlet-name>AfterEdit</servlet-name>
         <url-pattern>/after_edit.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AfterNewCata</servlet-name>
+        <url-pattern>/after_add_catagory.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AfterNewGood</servlet-name>
+        <url-pattern>/after_add_good.do</url-pattern>
     </servlet-mapping>
 
     <!--context parameters-->
